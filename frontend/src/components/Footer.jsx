@@ -8,10 +8,10 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <h2 className="footer-logo">
-              <span style={{color: 'var(--color-accent-red)'}}>C</span>
-              <span style={{color: 'var(--color-accent-green)'}}>T</span>
-              <span style={{color: 'var(--color-accent-blue)'}}>R</span>
-              <span style={{color: 'var(--color-accent-gold)'}}>L</span>
+              <span className="logo-letter-c">C</span>
+              <span className="logo-letter-t">T</span>
+              <span className="logo-letter-r">R</span>
+              <span className="logo-letter-l">L</span>
               PLUSPRINT
             </h2>
             <p>CUSTOM 3D PRINTED PRODUCTS MADE AROUND YOUR IDEAS.</p>

@@ -23,7 +23,13 @@ export default function AdminLayout() {
       <aside className={`admin-sidebar ${mobileMenuOpen ? 'mobile-open' : ''}`}>
         <div className="admin-brand" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div>
-            <h2>CTRLPLUSPRINT</h2>
+            <h2>
+              <span className="logo-letter-c">C</span>
+              <span className="logo-letter-t">T</span>
+              <span className="logo-letter-r">R</span>
+              <span className="logo-letter-l">L</span>
+              PLUSPRINT
+            </h2>
             <p>ADMIN PANEL</p>
           </div>
           {mobileMenuOpen && (

@@ -7,12 +7,11 @@ export default function Header() {
     <header className="header">
       <div className="container header-container">
         <Link to="/" className="brand-logo">
-          {/* Mockup for the logo, using styled text to somewhat emulate the colors if image missing */}
           <span className="logo-text">
-            <span style={{color: 'var(--color-accent-red)'}}>C</span>
-            <span style={{color: 'var(--color-accent-green)'}}>T</span>
-            <span style={{color: 'var(--color-accent-blue)'}}>R</span>
-            <span style={{color: 'var(--color-accent-gold)'}}>L</span>
+            <span className="logo-letter-c">C</span>
+            <span className="logo-letter-t">T</span>
+            <span className="logo-letter-r">R</span>
+            <span className="logo-letter-l">L</span>
             PLUSPRINT
           </span>
         </Link>

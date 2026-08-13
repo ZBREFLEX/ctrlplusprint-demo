@@ -170,10 +170,23 @@ ul, ol {
   color: var(--color-bg-base);
 }
 
-/* Text Colors */
+/* Text Colors & Animations */
 .text-gold {
   color: var(--color-accent-gold);
 }
+
+@keyframes logoColorCycle {
+  0%   { color: var(--color-accent-red); }
+  25%  { color: var(--color-accent-green); }
+  50%  { color: var(--color-accent-blue); }
+  75%  { color: var(--color-accent-gold); }
+  100% { color: var(--color-accent-red); }
+}
+
+.logo-letter-c { animation: logoColorCycle 20s linear infinite; animation-delay: 0s; }
+.logo-letter-t { animation: logoColorCycle 20s linear infinite; animation-delay: -5s; }
+.logo-letter-r { animation: logoColorCycle 20s linear infinite; animation-delay: -10s; }
+.logo-letter-l { animation: logoColorCycle 20s linear infinite; animation-delay: -15s; }
 
 /* Borders and Dividers */
 .border-subtle {
