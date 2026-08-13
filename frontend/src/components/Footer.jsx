@@ -32,9 +32,9 @@ export default function Footer() {
           </div>
           <div className="footer-social">
             <h4>FOLLOW US</h4>
-            <a href="#">WhatsApp</a>
+            <a href="https://wa.me/918590803009" target="_blank" rel="noreferrer">WhatsApp</a>
             <a href="#">Instagram</a>
-            <a href="#">Email</a>
+            <a href="mailto:contact@ctrlplusprint.com">Email</a>
           </div>
         </div>
         <div className="footer-bottom">

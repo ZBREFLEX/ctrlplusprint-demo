@@ -34,7 +34,7 @@ export default function ProductCard({ product }) {
       </Link>
       <div className="product-actions">
         <a 
-          href={`https://wa.me/1234567890?text=Hi CTRLPLUSPRINT,%0A%0AI'm interested in the ${name}.%0AProduct ID: ${id}%0APrice: ₹${price}%0A%0ACould you provide more details?`}
+          href={`https://wa.me/918590803009?text=Hi CTRLPLUSPRINT,%0A%0AI'm interested in the ${name}.%0AProduct ID: ${id}%0APrice: ₹${price}%0A%0ACould you provide more details?`}
           target="_blank" 
           rel="noreferrer" 
           className="btn-whatsapp-link"

@@ -35,12 +35,12 @@ export default function Home() {
 
             <div className="hero-actions">
               <a
-                href="https://wa.me/1234567890"
+                href="https://wa.me/918590803009"
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-primary"
               >
-                <MessageCircle size={18} />
+                <MessageCircle size={20} />
                 ORDER ON WHATSAPP
               </a>
               <Link to="/shop" className="btn btn-outline">

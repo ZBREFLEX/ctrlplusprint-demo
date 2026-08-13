@@ -25,7 +25,7 @@ export default function Header() {
         </nav>
         
         <div className="header-actions">
-          <a href="https://wa.me/1234567890" target="_blank" rel="noreferrer" className="btn btn-whatsapp-outline header-cta">
+          <a href="https://wa.me/918590803009" target="_blank" rel="noreferrer" className="btn btn-whatsapp-outline header-cta">
             <MessageCircle size={18} />
             WHATSAPP US
           </a>

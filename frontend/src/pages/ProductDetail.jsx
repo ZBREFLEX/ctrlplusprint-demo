@@ -76,10 +76,10 @@ export default function ProductDetail() {
 
             <div className="detail-actions">
               <a 
-                href={`https://wa.me/1234567890?text=${whatsappMessage}`}
+                href={`https://wa.me/918590803009?text=${whatsappMessage}`}
                 target="_blank" 
                 rel="noreferrer" 
-                className="btn btn-primary btn-full"
+                className="btn btn-primary product-cta"
               >
                 <MessageCircle size={18} /> ORDER ON WHATSAPP
               </a>

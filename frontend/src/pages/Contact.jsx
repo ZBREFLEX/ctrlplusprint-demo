@@ -18,7 +18,7 @@ export default function Contact() {
             </p>
             
             <div className="contact-methods">
-              <a href="https://wa.me/1234567890" target="_blank" rel="noreferrer" className="btn btn-primary contact-main-btn">
+              <a href="https://wa.me/918590803009" target="_blank" rel="noreferrer" className="btn btn-primary contact-cta">
                 <MessageCircle size={20} />
                 WHATSAPP US
               </a>
