@@ -1,63 +1,109 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+import heroCompositionImg from '../assets/hero-composition.jpg';
+import catKeychainsImg from '../assets/cat-keychains.jpg';
+import catLogosImg from '../assets/cat-logos.png';
+import catCreationsImg from '../assets/cat-creations.jpg';
 import './About.css';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function About() {
+  const containerRef = useRef(null);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  return (
-    <div className="page-about">
-      <section className="section about-hero">
-        <div className="container text-center">
-          <h1 className="about-title">WE TURN DIGITAL IDEAS INTO PHYSICAL OBJECTS.</h1>
-        </div>
-      </section>
+  useGSAP(() => {
+    // Create a timeline linked to the scroll progress of the container
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".story-scroll-area",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1, // Smooth scrubbing
+      }
+    });
 
-      <section className="section about-content">
-        <div className="container">
-          <div className="about-grid">
-            <div className="about-text">
-              <p>CTRLPLUSPRINT transforms digital concepts, designs, logos and ideas into physical 3D printed objects. We are a modern creative product brand that happens to use 3D printing.</p>
-              <p>Our philosophy is simple: Make it yours. We believe in providing premium, customizable products without the traditional manufacturing wait times.</p>
+    // Fade out quote 1, fade in quote 2
+    tl.to(".quote-1", { autoAlpha: 0, y: -50, duration: 1 })
+      .to(".bg-1", { opacity: 0, duration: 1 }, "<")
+      .fromTo(".quote-2", { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, duration: 1 }, "<")
+      .fromTo(".bg-2", { opacity: 0, scale: 1.1 }, { opacity: 0.3, scale: 1, duration: 1 }, "<")
+      
+      // Pause
+      .to({}, { duration: 0.5 })
+      
+      // Fade out quote 2, fade in quote 3
+      .to(".quote-2", { autoAlpha: 0, y: -50, duration: 1 })
+      .to(".bg-2", { opacity: 0, duration: 1 }, "<")
+      .fromTo(".quote-3", { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, duration: 1 }, "<")
+      .fromTo(".bg-3", { opacity: 0, scale: 1.1 }, { opacity: 0.3, scale: 1, duration: 1 }, "<")
+      
+      // Pause
+      .to({}, { duration: 0.5 })
+      
+      // Fade out quote 3, fade in quote 4
+      .to(".quote-3", { autoAlpha: 0, y: -50, duration: 1 })
+      .to(".bg-3", { opacity: 0, duration: 1 }, "<")
+      .fromTo(".quote-4", { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, duration: 1 }, "<")
+      .fromTo(".bg-4", { opacity: 0, scale: 1.1 }, { opacity: 0.3, scale: 1, duration: 1 }, "<")
+      
+      // Final Pause
+      .to({}, { duration: 1 });
+
+  }, { scope: containerRef });
+
+  return (
+    <div className="page-about" ref={containerRef}>
+      <div className="story-scroll-area">
+        <div className="story-sticky-container">
+          
+          {/* Background Images */}
+          <div className="story-backgrounds">
+            <img src={heroCompositionImg} className="story-bg bg-1" alt="Background 1" />
+            <img src={catKeychainsImg} className="story-bg bg-2" alt="Background 2" />
+            <img src={catLogosImg} className="story-bg bg-3" alt="Background 3" />
+            <img src={catCreationsImg} className="story-bg bg-4" alt="Background 4" />
+            <div className="bg-overlay"></div>
+          </div>
+
+          {/* Quotes */}
+          <div className="story-quotes">
+            <div className="story-quote quote-1">
+              <h2>WE TURN DIGITAL IDEAS INTO PHYSICAL <span className="text-gold">REALITY.</span></h2>
             </div>
             
-            <div className="about-process">
-              <div className="process-vertical">
-                <div className="process-node">IDEA</div>
-                <div className="process-arrow">&darr;</div>
-                <div className="process-node">DESIGN</div>
-                <div className="process-arrow">&darr;</div>
-                <div className="process-node">PRINT</div>
-                <div className="process-arrow">&darr;</div>
-                <div className="process-node">OBJECT</div>
+            <div className="story-quote quote-2">
+              <h2>EVERY PIECE IS UNIQUELY YOURS.<br/>WE BELIEVE IN TRUE <span className="text-red">CUSTOMIZATION.</span></h2>
+            </div>
+            
+            <div className="story-quote quote-3">
+              <h2>FROM A SIMPLE SKETCH TO A <br/>3D PRINTED <span className="text-blue">MASTERPIECE.</span></h2>
+            </div>
+            
+            <div className="story-quote quote-4">
+              <h2>NO MASS PRODUCTION.<br/>JUST PRECISION, QUALITY, AND <span className="text-green">IMAGINATION.</span></h2>
+              <div style={{ marginTop: '3rem', pointerEvents: 'auto' }}>
+                <a href="https://wa.me/918590803009" target="_blank" rel="noreferrer" className="btn btn-primary">
+                  START A CUSTOM ORDER
+                </a>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <section className="section about-what-we-create">
-        <div className="container text-center">
-          <h3 className="section-heading text-center">WHAT WE CREATE</h3>
-          <div className="creation-list">
-            <span className="creation-item">Keychains</span>
-            <span className="creation-item">Mirror Hangers</span>
-            <span className="creation-item">Custom Logos</span>
-            <span className="creation-item">Custom Creations</span>
+          {/* Scroll Indicator */}
+          <div className="scroll-indicator">
+            <span className="scroll-text">SCROLL</span>
+            <div className="scroll-line"></div>
           </div>
-        </div>
-      </section>
 
-      <section className="section final-cta-section">
-        <div className="container text-center">
-          <h2 className="final-cta-title" style={{fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '2rem'}}>HAVE AN IDEA?</h2>
-          <a href="https://wa.me/1234567890" target="_blank" rel="noreferrer" className="btn btn-primary">
-            START A CUSTOM ORDER &rarr;
-          </a>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

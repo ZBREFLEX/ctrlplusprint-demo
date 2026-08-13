@@ -1,79 +1,141 @@
 .page-about {
-  padding-top: 80px;
-}
-
-.about-hero {
-  padding: 8rem 0;
-}
-
-.about-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.about-content {
-  padding: 6rem 0;
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-
-.about-text p {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
+  background-color: var(--color-bg-base);
   color: var(--color-text-primary);
 }
 
-.process-vertical {
+.story-scroll-area {
+  /* Give enough height to scroll through 4 scenes */
+  height: 500vh;
+  position: relative;
+}
+
+.story-sticky-container {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-backgrounds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.story-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  /* By default scaled slightly up so it can scale down smoothly */
+  transform: scale(1.1);
+  will-change: transform, opacity;
+}
+
+.story-bg.bg-1 {
+  opacity: 0.3; /* Initial state */
+  transform: scale(1);
+}
+
+.bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(10,10,10,0.4) 0%, rgba(10,10,10,1) 100%);
+  z-index: 2;
+}
+
+.story-quotes {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+}
+
+.story-quote {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.story-quote h2 {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.story-quote.quote-1 {
+  opacity: 1; /* First quote starts visible */
+  pointer-events: auto;
+}
+
+.story-quote.quote-4 {
+  pointer-events: auto; /* Needs to be clickable for the button */
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
 }
 
-.process-node {
-  font-size: 1.5rem;
+.scroll-text {
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  padding: 1rem 3rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  background: var(--color-bg-card);
-  min-width: 200px;
-  text-align: center;
-}
-
-.process-arrow {
-  font-size: 1.5rem;
+  letter-spacing: 0.2em;
   color: var(--color-text-secondary);
 }
 
-.bg-light {
-  background-color: var(--color-bg-card);
-  padding: 6rem 0;
+.scroll-line {
+  width: 2px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
 }
 
-.creation-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-top: 3rem;
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-accent-gold);
+  animation: scrollDown 2s infinite;
 }
 
-.creation-item {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--color-accent-gold);
-}
-
-@media (max-width: 768px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
+@keyframes scrollDown {
+  0% { top: -100%; }
+  100% { top: 100%; }
 }
