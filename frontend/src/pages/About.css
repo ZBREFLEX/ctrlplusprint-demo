@@ -1,0 +1,79 @@
+.page-about {
+  padding-top: 80px;
+}
+
+.about-hero {
+  padding: 8rem 0;
+}
+
+.about-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-content {
+  padding: 6rem 0;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-text p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: var(--color-text-primary);
+}
+
+.process-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.process-node {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 1rem 3rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-card);
+  min-width: 200px;
+  text-align: center;
+}
+
+.process-arrow {
+  font-size: 1.5rem;
+  color: var(--color-text-secondary);
+}
+
+.bg-light {
+  background-color: var(--color-bg-card);
+  padding: 6rem 0;
+}
+
+.creation-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.creation-item {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-accent-gold);
+}
+
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
