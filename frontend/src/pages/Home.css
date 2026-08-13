@@ -51,13 +51,65 @@
 }
 
 .hero-title {
+  color: var(--color-text-primary);
   margin-bottom: 1.5rem;
   line-height: 0.95;
+  display: inline-block;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Add melting animation */
+  background: linear-gradient(
+    180deg,
+    var(--color-accent-red) 0%,
+    var(--color-accent-gold) 25%,
+    var(--color-accent-green) 50%,
+    var(--color-accent-blue) 75%,
+    var(--color-accent-red) 100%
+  );
+  background-size: 100% 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: liquidMelt 8s linear infinite;
+  /* Add a subtle drop shadow to support the liquid feel */
+  filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5)) url('#liquid-text');
+}
+
+.hero-title:hover {
+  transform: perspective(800px) rotateX(15deg) rotateY(-10deg) translateZ(30px) scale(1.05);
+  text-shadow: 
+    1px 1px 0px var(--color-accent-gold),
+    2px 2px 0px var(--color-accent-red),
+    3px 3px 0px var(--color-accent-green),
+    4px 4px 0px var(--color-accent-blue),
+    5px 5px 0px #444,
+    6px 6px 0px #333,
+    7px 7px 0px #222,
+    8px 8px 0px #111,
+    9px 9px 0px #0a0a0a,
+    15px 15px 20px rgba(0,0,0,0.8);
+  cursor: default;
+}
+
+@keyframes liquidMelt {
+  0% {
+    background-position: 0% 0%;
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
+  }
+  50% {
+    filter: drop-shadow(0px 15px 8px rgba(252, 163, 17, 0.3));
+  }
+  100% {
+    background-position: 0% 100%;
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
+  }
 }
 
 .hero-subtitle {
-  font-size: 1.25rem;
-  margin-bottom: 2.5rem;
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
 }
 
 .hero-actions {
