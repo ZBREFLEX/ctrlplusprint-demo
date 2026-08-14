@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { ShieldCheck, Box, Zap, MessageCircle, ArrowRight } from "lucide-react";
-import heroCompositionImg from "../assets/hero-composition.jpg";
+import heroCompositionImg from "../assets/hero-composition-transparent.png";
 import catKeychainsImg from "../assets/cat-keychains.jpg";
 import catHangersImg from "../assets/cat-hangers.png";
 import catLogosImg from "../assets/cat-logos.png";
@@ -15,6 +15,13 @@ export default function Home() {
 
   return (
     <div className="page-home">
+      {/* Animated Flow Line */}
+      <div className="animated-flow-line">
+        <div className="flow-stripe flow-stripe-1"></div>
+        <div className="flow-stripe flow-stripe-2"></div>
+        <div className="flow-stripe flow-stripe-3"></div>
+      </div>
+      
       {/* 1. HERO SECTION */}
       <section className="hero-section">
         <div className="container hero-container">
