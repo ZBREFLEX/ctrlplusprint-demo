@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import { ShieldCheck, Box, Zap, MessageCircle, ArrowRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ShieldCheck, Box, Zap, MessageCircle, ArrowRight, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import heroCompositionImg from "../assets/hero-composition-transparent.png";
 import catKeychainsImg from "../assets/cat-keychains.jpg";
 import catHangersImg from "../assets/cat-hangers.png";
@@ -9,9 +9,49 @@ import catCreationsImg from "../assets/cat-creations.jpg";
 import "./Home.css";
 
 export default function Home() {
+  const sliderRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Continuous smooth auto-slide animation
+  useEffect(() => {
+    let animationId;
+    const play = () => {
+      if (!isHovered && sliderRef.current) {
+        sliderRef.current.scrollLeft += 1;
+        // Seamlessly loop when reaching halfway (since we duplicate items)
+        if (sliderRef.current.scrollLeft >= sliderRef.current.scrollWidth / 2) {
+          sliderRef.current.scrollLeft = 0;
+        }
+      }
+      animationId = requestAnimationFrame(play);
+    };
+    
+    animationId = requestAnimationFrame(play);
+    return () => cancelAnimationFrame(animationId);
+  }, [isHovered]);
+
+  const scroll = (direction) => {
+    if (sliderRef.current) {
+      const scrollAmount = 332; // card width + gap
+      sliderRef.current.scrollBy({ 
+        left: direction === "left" ? -scrollAmount : scrollAmount, 
+        behavior: "smooth" 
+      });
+    }
+  };
+
+  // Data for the New Arrivals slider
+  const newArrivals = [
+    { id: 1, title: "Custom Neon LED Signs", image: catLogosImg, label: "HOT", color: "red" },
+    { id: 2, title: "Premium Spotify Hangers", image: catHangersImg, label: "NEW", color: "green" },
+    { id: 3, title: "Minimalist Desk Organizers", image: catCreationsImg, label: "TRENDING", color: "blue" },
+    { id: 4, title: "Personalized 3D Keychains", image: catKeychainsImg, label: "BESTSELLER", color: "gold" },
+    { id: 5, title: "Illuminated Gaming Logos", image: catLogosImg, label: "NEW", color: "red" },
+  ];
 
   return (
     <div className="page-home">
@@ -21,7 +61,7 @@ export default function Home() {
         <div className="flow-stripe flow-stripe-2"></div>
         <div className="flow-stripe flow-stripe-3"></div>
       </div>
-      
+
       {/* 1. HERO SECTION */}
       <section className="hero-section">
         <div className="container hero-container">
@@ -192,7 +232,53 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. HOW WE CREATE */}
+      {/* 3. NEW ARRIVALS SECTION */}
+      <section className="section new-arrivals-section">
+        <div className="container">
+          <div className="section-header text-center">
+            <span className="section-eyebrow text-gold">
+              FRESH OUT OF THE PRINTER
+            </span>
+            <h2 className="section-title">
+              NEW <span className="text-gold">ARRIVALS</span> <Sparkles size={28} className="text-gold title-icon" />
+            </h2>
+          </div>
+        </div>
+
+        <div 
+          className="slider-wrapper"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onTouchStart={() => setIsHovered(true)}
+          onTouchEnd={() => setIsHovered(false)}
+        >
+          <button className="slider-btn left" onClick={() => scroll("left")}>
+            <ChevronLeft size={28} />
+          </button>
+
+          <div className="slider-track" ref={sliderRef}>
+            {/* Duplicate items for seamless continuous looping */}
+            {[...newArrivals, ...newArrivals].map((item, index) => (
+              <div key={`${item.id}-${index}`} className={`arrival-poster border-${item.color}`}>
+                <div className={`arrival-badge bg-${item.color}`}>{item.label}</div>
+                <img src={item.image} alt={item.title} className="arrival-image" />
+                <div className="arrival-info">
+                  <h4 className="arrival-title">{item.title}</h4>
+                  <Link to="/shop" className={`arrival-btn text-${item.color}`}>
+                    View Details &rarr;
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <button className="slider-btn right" onClick={() => scroll("right")}>
+            <ChevronRight size={28} />
+          </button>
+        </div>
+      </section>
+
+      {/* 4. HOW WE CREATE */}
       <section className="section how-we-create">
         <div className="container">
           <div className="section-header text-center">

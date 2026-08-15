@@ -328,6 +328,160 @@
   .categories-grid { grid-template-columns: 1fr; }
 }
 
+/* ==================== NEW ARRIVALS SECTION ==================== */
+.new-arrivals-section {
+  overflow: hidden;
+  padding: 2rem 0 6rem 0;
+}
+
+.title-icon {
+  vertical-align: middle;
+  margin-left: 0.5rem;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+  50% { transform: scale(1.2) rotate(15deg); opacity: 1; text-shadow: 0 0 10px var(--color-accent-gold); }
+}
+
+.slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.slider-track {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  padding: 2rem 5rem; /* Large horizontal padding to center the first item initially and make room for buttons */
+  width: 100%;
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.slider-btn:hover {
+  background: var(--color-accent-gold);
+  color: var(--color-bg-base);
+  border-color: var(--color-accent-gold);
+}
+
+.slider-btn.left {
+  left: 2rem;
+}
+
+.slider-btn.right {
+  right: 2rem;
+}
+
+.arrival-poster {
+  width: 300px;
+  flex: 0 0 auto;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.arrival-poster:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.border-red:hover { border-color: var(--color-accent-red); box-shadow: 0 15px 35px rgba(230, 57, 70, 0.15); }
+.border-green:hover { border-color: var(--color-accent-green); box-shadow: 0 15px 35px rgba(42, 157, 143, 0.15); }
+.border-blue:hover { border-color: var(--color-accent-blue); box-shadow: 0 15px 35px rgba(0, 119, 182, 0.15); }
+.border-gold:hover { border-color: var(--color-accent-gold); box-shadow: 0 15px 35px rgba(252, 163, 17, 0.15); }
+
+.arrival-badge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  color: var(--color-bg-base);
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  letter-spacing: 0.05em;
+}
+
+.arrival-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+  transition: transform var(--transition-normal);
+}
+
+.arrival-poster:hover .arrival-image {
+  transform: scale(1.03);
+}
+
+.arrival-info {
+  margin-top: auto;
+  text-align: left;
+}
+
+.arrival-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.arrival-btn {
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-block;
+  transition: transform var(--transition-fast);
+  text-decoration: none;
+}
+
+.arrival-poster:hover .arrival-btn {
+  transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+  .arrival-poster { width: 250px; }
+  .slider-btn { display: none; } /* On mobile, users just swipe */
+  .slider-track { padding: 2rem 1rem; }
+}
+
 /* ==================== HOW WE CREATE ==================== */
 .timeline-container {
   display: grid;

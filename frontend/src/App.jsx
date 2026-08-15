@@ -9,6 +9,9 @@ import ProductDetail from './pages/ProductDetail';
 // Admin Imports
 import AdminLayout from './admin/components/AdminLayout';
 import Dashboard from './admin/pages/Dashboard';
+import AdminLogin from './admin/pages/AdminLogin';
+import AdminRegister from './admin/pages/AdminRegister';
+import AdminForgotPassword from './admin/pages/AdminForgotPassword';
 // (Other admin pages will go here, routing them to Dashboard for now as placeholders)
 
 function App() {
@@ -23,6 +26,11 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
         </Route>
+
+        {/* Admin Auth Routes */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/register" element={<AdminRegister />} />
+        <Route path="/admin/forgot-password" element={<AdminForgotPassword />} />
 
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminLayout />}>
